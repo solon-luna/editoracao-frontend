@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro');
+
+html, body, #root {
+  overflow: hidden;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  font-family: 'Roboto';
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex: 0.8;
+}
+
+.body {
+  flex: 9;
+}
+
+.containerTable {
+  height: 86%;
+  background-color: #1abc9c;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+  font: normal 1.0em Roboto;
+}
+
+.tooltipContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+.tooltip {
+  position: absolute;
+  width: 100%;
+  right: -30px;
+  top: -10px;
+}
+
+.iconAction {
+  color: red;
+  cursor: pointer;
+}

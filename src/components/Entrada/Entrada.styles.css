@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro');
+
+.containerEntrada {
+  height: 86%;
+  background-color: #1abc9c;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-top: 4vh;
+  padding-bottom: 6vh;
+  font: normal 1.0em Roboto;
+}
+
+.title, .question {
+  color: #2c3e50;
+  font-size: 1.2em;
+  margin-bottom: 2vh;
+}
+
+.errorText {
+  margin-bottom: 20px;
+}
+
+.labelNext {
+  cursor: pointer;
+  border-radius: 5px;
+  padding-top: 5px;
+  transition: color 0.6s ease;
+  -webkit-transition: color 0.6s ease;
+}
+
+.labelNext:hover {
+  color: white;
+  transition: color 0.6s ease;
+  -webkit-transition: color 0.6s ease;
+}
+
+.labelNext:hover + .iconContainer {
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.6s ease;
+  -webkit-transition: color 0.6s ease;
+}
+
+.pagination {
+  margin-top: 20px;
+  align-content: center;
+}
+
+.listHeader {
+  background-color: #EFEFEE;
+}
+
+.listItem {
+  font: normal 1.1em Roboto;
+  margin: 10px;
+  display: flex;
+  flex: 1;
+}
+
+.listItemAction {
+  margin: 10px;
+  display: flex;
+  flex: 0.5;
+}
+
+/* Transitions classes */
+.component-enter {
+  transform: translateX(-50px);
+  opacity: 0.01;
+}
+
+.component-enter.component-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 0.5s ease-in;
+}
+
+.component-leave {
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.component-leave.component-leave-active {
+  opacity: 0.01;
+  transform: translateX(50px);
+  transition: all 0.5s ease-out;
+}

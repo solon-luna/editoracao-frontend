@@ -1,0 +1,82 @@
+.minimalFormContainer {
+
+}
+
+.label {
+  color: #2c3e50;
+  font-size: 1.2em;
+}
+
+.errorText {
+  display: block;
+  color: #5f27cd;
+  font-size: 0.8em;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.iconContainer {
+  border-radius: 50%;
+  color: #2c3e50;
+  height: 25px;
+  width: 25px;
+  margin-left: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s ease;
+  -webkit-transition: all 0.6s ease;
+}
+
+.steps .iconContainer {
+  margin-left: 0;
+  margin-right: 1vw;
+}
+
+.iconContainer:hover {
+  background-color: #08aa8a;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.6s ease;
+  -webkit-transition: background-color 0.6s ease;
+}
+
+.iconContainer:active {
+  background-color: #2c3e50;
+}
+
+.steps {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #2c3e50;
+  font-size: 0.9em;
+  margin-top: 2vh;
+}
+
+/* Transitions classes */
+.component-enter {
+  transform: translateX(-50px);
+  opacity: 0.01;
+}
+
+.component-enter.component-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 0.5s ease-in;
+}
+
+.component-leave {
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.component-leave.component-leave-active {
+  opacity: 0.01;
+  transform: translateX(50px);
+  transition: all 0.5s ease-out;
+}
