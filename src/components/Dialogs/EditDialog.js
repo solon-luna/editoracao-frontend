@@ -20,7 +20,7 @@ class EditDialog extends Component {
     this.state = { ...props.fields };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ ...nextProps.fields });
   }
 

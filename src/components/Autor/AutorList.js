@@ -36,7 +36,7 @@ class AutorList extends Component {
     dispatch(startGetAutores());
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let { isLoading, response, editDialogOpen } = this.state;
 
     if (nextProps.autor.erro !== '') {
@@ -55,7 +55,7 @@ class AutorList extends Component {
   // Dispatch the action to send the data
   onSave = (autor) => {
     let { dispatch } = this.props;
-    dispatch(startUpdateAutor(autor._id, autor['0'].value, this.props.autor.autores, this.props.usuario.token));
+    dispatch(startUpdateAutor(autor._id, autor['0'].value, this.props.autor.autores));
     this.setState({ isLoading: true });
   }
 
@@ -108,6 +108,7 @@ class AutorList extends Component {
 
   render() {
     return (
+      <div className="content-wrapper">
       <section className="containerTable">
         { this._renderTable() }
 
@@ -135,6 +136,7 @@ class AutorList extends Component {
           onRequestClose={() => this.setState({ response: '' })}
         />
       </section>
+      </div>
     );
   }
 }
@@ -157,8 +159,7 @@ const header = {
 };
 
 const mapStateToProps = store => ({
-  autor: store.autor,
-  usuario: store.usuario,
+  autor: store.autor
 });
 
 export default connect(mapStateToProps)(AutorList);

@@ -13,7 +13,7 @@ class RubricaAdd extends Component {
     this.state = { isLoading: false, isSaved: false, response: '' };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let { isLoading, response, isSaved } = this.state;
 
     if (nextProps.rubrica.erro !== '') {
@@ -38,14 +38,13 @@ class RubricaAdd extends Component {
 
   save = (fields) => {
     const { dispatch } = this.props;
-    const { token } = this.props.usuario;
     this.setState({ isLoading: true }, () => {
       const rubrica = {
         codigo: fields[0].value,
         descricao: fields[1].value,
         tipo: fields[2].value,
       };
-      dispatch(startAddRubrica(rubrica, token));
+      dispatch(startAddRubrica(rubrica));
     });
   }
 
@@ -85,6 +84,7 @@ class RubricaAdd extends Component {
 
   render() {
     return (
+      <div className="content-wrapper">
       <section className="containerEntrada">
         <span className="title">{ this.state.isSaved ? this.props.rubrica.mensagem : 'Vamos adicionar uma nova rubrica!'}</span>
         { this._renderForm() }
@@ -96,6 +96,7 @@ class RubricaAdd extends Component {
           onRequestClose={this.handleRequestClose}
         />
       </section>
+      </div>
     );
   }
 }

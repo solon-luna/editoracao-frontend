@@ -14,7 +14,7 @@ class LocalAdd extends Component {
     this.state = { isLoading: true, isSaved: false, response: ''};
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let {isLoading, response, isSaved} = this.state;
     if(nextProps.local.locais) {
       isLoading = false;
@@ -46,13 +46,12 @@ class LocalAdd extends Component {
 
   save = (fields) => {
     const { dispatch } = this.props;
-    const { token } = this.props.usuario;
     this.setState({ isLoading: true }, () => {
       const local = {
         _idSubLocal: fields[0]._id ? fields[0]._id : null,
         descricao: fields[1].value
       };
-      dispatch(startAddLocal(local, token));
+      dispatch(startAddLocal(local));
     });
   }
 
@@ -88,6 +87,7 @@ class LocalAdd extends Component {
 
   render() {
     return (
+      <div className="content-wrapper">
       <section className="containerEntrada">
         <span className="title">{ this.state.isSaved ? this.props.local.mensagem : 'Vamos adicionar um novo local!'}</span>
         { this._renderForm() }
@@ -99,12 +99,12 @@ class LocalAdd extends Component {
           onRequestClose={this.handleRequestClose}
         />
       </section>
+      </div>
     );
   }
 }
 
 const mapStateToProps = store => ({
-  usuario: store.usuario,
   local: store.local,
 });
 

@@ -1,16 +1,12 @@
-import React, { Component } from "react";
+import React from 'react';
+import { withRouter } from "react-router-dom";
+
 import './home.styles.css';
 
-class Home extends Component {
-  render() {
-    return (
-      <home className="main-footer">
-        <div className="imgContainer">
-          <img alt="principal" src={require('./home.jpg')} />
-        </div>
-      </home>
-    );
-  }
-}
+const Home = () => (
+  <div className="imgContainer">
+    <img alt="principal" src={require('./home.jpg')} />
+  </div>
+);
 
-export default Home;
+export default withRouter(Home);

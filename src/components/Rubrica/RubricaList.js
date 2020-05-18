@@ -25,7 +25,7 @@ class RubricaList extends Component {
     dispatch(startGetRubricas());
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.rubrica.rubricas) {
       this.setState({ isLoading: false });
     }
@@ -45,6 +45,7 @@ class RubricaList extends Component {
     ));
 
     return (
+      <div className="content-wrapper">
       <Table style={{ backgroundColor: '#1abc9c' }}>
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <TableRow style={{ borderColor: '#ffffff' }}>
@@ -57,6 +58,7 @@ class RubricaList extends Component {
           { tableRows }
         </TableBody>
       </Table>
+      </div>
     );
   }
 

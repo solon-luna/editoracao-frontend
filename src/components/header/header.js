@@ -17,14 +17,14 @@ class Header extends Component {
     }).then(value => {
       switch (value) {
         case "sure":
-          swal("Voce Saiu!", "success").then(val => {
+          swal("Voce Saiu!", "obrigado").then(val => {
             localStorage.removeItem("TOKEN_KEY");
             //return this.props.history.push("/login");
             return this.props.history.push("/");
           });
           break;
         case "nope":
-          swal("Ok", "success");
+          swal("Ok", "obrigado");
           break;
         default:
           swal("Obrigado!");
@@ -42,32 +42,11 @@ class Header extends Component {
             </a>
           </li>
           <li className="nav-item d-none d-sm-inline-block">
-            <a href="../../index3.html" className="nav-link">
+            <a href="/" className="nav-link">
               Home
             </a>
           </li>
-          <li className="nav-item d-none d-sm-inline-block">
-            <a href="# " className="nav-link">
-              Contact
-            </a>
-          </li>
         </ul>
-        {/* SEARCH FORM */}
-        <form className="form-inline ml-3">
-          <div className="input-group input-group-sm">
-            <input
-              className="form-control form-control-navbar"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <div className="input-group-append">
-              <button className="btn btn-navbar" type="submit">
-                <i className="fas fa-search" />
-              </button>
-            </div>
-          </div>
-        </form>
         {/* Right navbar links */}
         <ul className="navbar-nav ml-auto">
           {/* Messages Dropdown Menu */}

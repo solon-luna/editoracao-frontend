@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro');
+
+html, body, #root {  
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.editoracao-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.editoracao-container2 {
+  color: #0c7563;
+  font-family: 'Roboto';
+  min-height: 300px;
+  max-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-header {
+  text-align: center;
+  background-color: #d3d3d3;
+  padding: 1vw;
+  font-weight: bold;
+}
+
+form {
+    background-color: #0c7563;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2vw 4vw 0vw 4vw;
+}
+
+.form-row label{
+    flex: 1;
+    font-family: 'Source Sans Pro';
+}
+
+.form-row input {
+    border: none;
+    font-size: 1em;
+    flex: 2;
+}
+
+.form-row button{
+    border: none;
+    padding: 0.5vw 2vw;
+    color: #002419;
+    font-family: 'Source Sans Pro';
+    margin-bottom: 2vw;
+}

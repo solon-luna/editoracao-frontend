@@ -71,13 +71,14 @@ class Step1 extends Component {
   render() {
     const icon = this.props.index !== 2 ? <span className="fa fa-arrow-right iconNext" /> : <span className="fa fa-check iconNext" />;
     return (
+      <div className="content-wrapper">
       <section>
         <strong className="label">Data</strong>
         <div className="inputContainer">
           <DatePicker
             value={this.state.date}
             onChange={(e, date) => this.setState({ date })}
-            locale="pt-BR"
+            locale="pt-br"
             underlineStyle={{ borderColor: '#08aa8a' }}
             underlineFocusStyle={{ borderColor: '#1abc9c' }}
           />
@@ -145,6 +146,7 @@ class Step1 extends Component {
         { this.renderPagination() }
 
       </section>
+      </div>
     );
   }
 }

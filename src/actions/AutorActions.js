@@ -46,13 +46,13 @@ export const addAutor = (mensagem) => {
 }
 
 //Salva um novo Autor
-export const startAddAutor = (autor, token) => {
+export const startAddAutor = (autor) => {
   return (dispatch, getState) => {
     return axios({
       method: 'post',
       url: types.AUTOR,
       data: autor,
-      headers: types.GET_HTTP_HEADER(token),
+      headers: types.HTTP_HEADER,
       validateStatus: function (status) {
         return status >= 200 && status <= 401;
       }
@@ -77,12 +77,12 @@ export const setUpdateAutor = (autores) => {
 }
 
 // Atualiza um autor
-export const startUpdateAutor = (_id, nome, autores, token) => {
+export const startUpdateAutor = (_id, nome, autores) => {
   return (dispatch, getState) => {
     return axios({
       method: 'put',
       url: types.AUTOR + "/" + _id,
-      headers: types.GET_HTTP_HEADER(token),
+      headers: types.HTTP_HEADER,
       data: { nome },
       validateStatus: function (status) {
         return status >= 200 && status <= 401;

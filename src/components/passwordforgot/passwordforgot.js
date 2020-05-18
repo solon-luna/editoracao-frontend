@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import Recaptcha from "react-recaptcha";
 const PasswordForgotSchema = Yup.object().shape({
   email: Yup.string()
-    .email("Invalid email")
-    .required("Email is Required"),
+    .email("Email invalido")
+    .required("Email obrigatorio"),
   recaptcha: Yup.string().required()
 });
 
@@ -29,16 +29,16 @@ class Passwordforgot extends Component {
       .then(res => {
         console.log(res.data.result);
         if (res.data.result === "success") {
-          swal("Success!", res.data.message, "success").then(value => {
+          swal("Sucesso!", res.data.message, "ok").then(value => {
             //s window.location.reload();
           });
         } else if (res.data.result === "error") {
-          swal("Error!", res.data.message, "error");
+          swal("Erro!", res.data.message, "ok");
         }
       })
       .catch(error => {
         console.log(error);
-        swal("Error!", "Unexpected error", "error");
+        swal("Erro!", "Erro inesperado", "ok");
       });
   };
   showForm = ({
@@ -55,7 +55,7 @@ class Passwordforgot extends Component {
       <form onSubmit={handleSubmit}>
         <div className="card-body">
           <div className="form-group  has-feedback">
-            <label htmlFor="email">Email address</label>
+            <label htmlFor="email">Email</label>
             <input
               onChange={handleChange}
               value={values.email}
@@ -66,7 +66,7 @@ class Passwordforgot extends Component {
                   : "form-control"
               }
               id="email"
-              placeholder="Enter email"
+              placeholder="Entre com o email"
             />
             {errors.email && touched.email ? (
               <small id="passwordHelp" class="text-danger">
@@ -98,7 +98,7 @@ class Passwordforgot extends Component {
               disable={isSubmitting}
               class="btn btn-primary btn-block"
             >
-              Request new password
+              Pedir uma nova senha
             </button>
           </div>
         </div>
@@ -112,15 +112,14 @@ class Passwordforgot extends Component {
         <div className="login-box">
           <div className="login-logo">
             <a href="# ">
-              <b>Basic</b>POS
+              <b>Controle de Livros</b>
             </a>
           </div>
           {/* /.login-logo */}
           <div className="card">
             <div className="card-body login-card-body">
               <p className="login-box-msg">
-                You forgot your password? Here you can easily retrieve a new
-                password.
+                Esqueceu sua senha? Aqui voce pode pedir uma nova.
               </p>
               <Formik
                 initialValues={{
@@ -137,11 +136,11 @@ class Passwordforgot extends Component {
                 {props => this.showForm(props)}
               </Formik>
               <p className="mb-0">
-                <Link to="/login">Login</Link>
+                <Link to="/login">Entrar</Link>
               </p>
 
               <p className="mb-0">
-                <Link to="/register">Register a new membership</Link>
+                <Link to="/register">Registrar um novo usuario</Link>
               </p>
             </div>
             {/* /.login-card-body */}

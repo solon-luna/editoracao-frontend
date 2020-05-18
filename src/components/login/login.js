@@ -7,11 +7,11 @@ import Recaptcha from "react-recaptcha";
 import { Link } from "react-router-dom";
 const LoginSchema = Yup.object().shape({
   username: Yup.string()
-    .min(2, "username is Too Short!")
-    .max(50, "username is Too Long!")
-    .required("Username is Required"),
+    .min(2, "username muito curto!")
+    .max(50, "username muito grande!")
+    .required("Username obrigatorio"),
   recaptcha: Yup.string().required(),
-  password: Yup.string().required("Password is required")
+  password: Yup.string().required("Senha obrigatoria")
 });
 
 class Login extends Component {
@@ -45,13 +45,13 @@ class Login extends Component {
         .put(process.env.REACT_APP_API_URL +"activation?token=" + token)
         .then(res => {
           if (res.data.result === "success") 
-            swal("Success!", "Activation Success your can login !", "success");
+            swal("Sucesso!", "Ativacao feita...voce pode entrar !", "ok");
           else if (res.data.result === "error") 
-            swal("Error!", "Activation Fail please try again !", "error"); 
+            swal("Erro!", "Ativacao Falhou...tente novamente !", "ok"); 
         })       
         .catch(error => {
           console.log(error);
-          swal("Error!", "Unexpected error", "error");
+          swal("Erro!", "Erro inesperado", "ok");
         })
       }
       let notify = activeUser(token); 
@@ -64,16 +64,16 @@ class Login extends Component {
       .then(res => {
         if (res.data.result === "success") {
           localStorage.setItem("TOKEN_KEY", res.data.token);
-          swal("Success!", res.data.message, "success").then(value => {
+          swal("Sucesso!", res.data.message, "ok").then(value => {
             history.push("/home");
           });
         } else if (res.data.result === "error") {
-          swal("Error!", res.data.message, "error");
+          swal("Erro!", res.data.message, "ok");
         }
       })
       .catch(error => {
         console.log(error);
-        return swal("Error!", error.message, "error");
+        return swal("Erro!", error.message, "ok");
       });
   };
   showForm = ({
@@ -154,7 +154,7 @@ class Login extends Component {
           <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember" />
-              <label for="remember">Remember Me</label>
+              <label for="remember"> Lembrar-me</label>
             </div>
           </div>
           <div class="col-4">
@@ -163,7 +163,7 @@ class Login extends Component {
               disabled={isSubmitting}
               class="btn btn-primary btn-block"
             >
-              Sign In
+              Entrar
             </button>
           </div>
         </div>
@@ -177,12 +177,12 @@ class Login extends Component {
         <div className="register-box">
           <div className="register-logo">
             <a href="../../index2.html">
-              <b>Basic</b>POS
+              <b>Controle de Livros</b>
             </a>
           </div>
           <div className="card">
             <div className="card-body register-card-body">
-              <p className="login-box-msg">Sign in to start your session</p>
+              <p className="login-box-msg">Entre com seu login</p>
 
               <Formik
                 initialValues={{
@@ -200,10 +200,10 @@ class Login extends Component {
                 {props => this.showForm(props)}
               </Formik>
               <p class="mb-1">
-                <Link to="/password/forgot">I forgot my password</Link>
+                <Link to="/password/forgot">Esqueci minha senha</Link>
               </p>
               <p class="mb-0">
-                <Link to="/register">Register a new membership</Link>
+                <Link to="/register">Registrar um novo usuario</Link>
               </p>
             </div>
             {/* /.form-box */}

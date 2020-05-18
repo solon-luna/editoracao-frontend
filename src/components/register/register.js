@@ -6,17 +6,17 @@ import swal from "sweetalert";
 import Recaptcha from "react-recaptcha";
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
-    .min(2, "username is Too Short!")
-    .max(50, "username is Too Long!")
-    .required("username is Required"),
+    .min(2, "username muito curto!")
+    .max(50, "username muito longo!")
+    .required("username requerido"),
   recaptcha: Yup.string().required(),
   email: Yup.string()
     .email("Invalid email")
-    .required("Email is Required"),
-  password: Yup.string().required("Password is required"),
+    .required("Email requerido"),
+  password: Yup.string().required("Senha requerida"),
   confirm_password: Yup.string().oneOf(
     [Yup.ref("password"), null],
-    "Both password need to be the same"
+    "Senha e confirmacao devem ser iguais"
   )
 });
 
@@ -35,16 +35,16 @@ class Register extends Component {
       .then(res => {
         console.log(res.data.result);
         if (res.data.result === "success") {
-          swal("Success!", res.data.message, "warning").then(value => {
+          swal("Sucesso!", res.data.message, "ok").then(value => {
             history.push("/login");
           });
         } else if (res.data.result === "error") {
-          swal("Error!", res.data.message, "error");
+          swal("Erro!", res.data.message, "ok");
         }
       })
       .catch(error => {
         console.log(error);
-        swal("Error!", "Unexpected error", "error");
+        swal("Erro!", "Erro inesperado", "ok");
       });
   };
   showForm = ({
@@ -156,7 +156,7 @@ class Register extends Component {
               type="submit"
               className="btn btn-primary btn-block btn-flat"
             >
-              Confirm
+              Confirma
             </button>
             <button
               type="button"
@@ -165,7 +165,7 @@ class Register extends Component {
               }}
               className="btn btn-default btn-block btn-flat"
             >
-              already member?
+              ainda tem seu login?
             </button>
           </div>
           {/* /.col */}
@@ -180,12 +180,12 @@ class Register extends Component {
         <div className="register-box">
           <div className="register-logo">
             <a href="../../index2.html">
-              <b>Basic</b>POS
+              <b>Controle de Livros</b>
             </a>
           </div>
           <div className="card">
             <div className="card-body register-card-body">
-              <p className="login-box-msg">Register a new membership</p>
+              <p className="login-box-msg">Registrar um novo usuario</p>
 
               <Formik
                 initialValues={{

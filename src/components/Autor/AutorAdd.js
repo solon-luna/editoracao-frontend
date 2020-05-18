@@ -14,7 +14,7 @@ class AutorAdd extends Component {
     this.state = { isLoading: false, isSaved: false, response: ''};
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let {isLoading, response, isSaved} = this.state
 
     if(nextProps.autor.erro !== "") {
@@ -39,12 +39,11 @@ class AutorAdd extends Component {
 
   save = (fields) => {
     let {dispatch} = this.props;
-    let {token} = this.props.usuario;
     this.setState({isLoading: true}, () => {
       let autor = {
         nome: fields[0].value
       };
-      dispatch(startAddAutor( autor, token ));
+      dispatch(startAddAutor( autor ));
     });
   }
 
@@ -72,6 +71,7 @@ class AutorAdd extends Component {
 
   render() {
     return (
+      <div className="content-wrapper">
       <section className="containerEntrada">
         <span className="title">{ this.state.isSaved ? this.props.autor.mensagem : 'Vamos adicionar um novo autor!'}</span>
         { this._renderForm() }
@@ -83,13 +83,13 @@ class AutorAdd extends Component {
           onRequestClose={this.handleRequestClose}
         />
       </section>
+      </div>
     );
   }
 }
 
 const mapStateToProps = (store) => {
   return {
-    usuario: store.usuario,
     autor: store.autor
   }
 }

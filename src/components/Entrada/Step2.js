@@ -148,6 +148,7 @@ class Step2 extends Component {
     const icon = this.props.index !== 2 ? <span className="fa fa-arrow-right iconNext" /> : <span className="fa fa-check iconNext" />;
 
     return (
+      <div className="content-wrapper">
       <section>
         <div className="inputContainer">
           <AutoComplete
@@ -263,6 +264,7 @@ class Step2 extends Component {
           ]}
         />
       </section>
+      </div>
     );
   }
 }

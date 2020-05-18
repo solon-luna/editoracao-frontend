@@ -5,10 +5,10 @@ import axios from "axios";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
 const PasswordresetSchema = Yup.object().shape({
-  password: Yup.string().required("New Password is required"),
+  password: Yup.string().required("Nova senha é requerida"),
   confirm_password: Yup.string().oneOf(
     [Yup.ref("password"), null],
-    "Both password need to be the same"
+    "Senha e confirmacao devem ser as mesmas"
   )
 });
 
@@ -28,16 +28,16 @@ class Passwordreset extends Component {
       .put(process.env.REACT_APP_API_URL +"password/reset?token=" + token, values)
       .then(res => {
         if (res.data.result === "success") {
-          swal("Success!", res.data.message, "success").then(value => {
+          swal("Sucesso!", res.data.message, "ok").then(value => {
             history.push("/");
           });
         } else if (res.data.result === "error") {
-          swal("Error!", res.data.message, "error");
+          swal("Erro!", res.data.message, "ok");
         }
       })
       .catch(error => {
         console.log(error);
-        swal("Error!", "Unexpected error", "error");
+        swal("Erro!", "Erro inesperado", "ok");
       });
   };
   showForm = ({
@@ -54,7 +54,7 @@ class Passwordreset extends Component {
       <form onSubmit={handleSubmit}>
         <div className="card-body">
           <div className="form-group  has-feedback">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Senha:</label>
             <input
               name="password"
               onChange={handleChange}
@@ -66,7 +66,7 @@ class Passwordreset extends Component {
                   : "form-control"
               }
               id="password"
-              placeholder="Enter new password"
+              placeholder="Entre com a nova senha"
             />
             {errors.password && touched.password ? (
               <small id="passwordHelp" class="text-danger">
@@ -75,7 +75,7 @@ class Passwordreset extends Component {
             ) : null}
           </div>
           <div className="form-group  has-feedback">
-            <label htmlFor="password">Confirm Password:</label>
+            <label htmlFor="password">Confirme a senha:</label>
 
             <input
               onChange={handleChange}
@@ -88,7 +88,7 @@ class Passwordreset extends Component {
               }
               id="confirm_password"
               name="confirm_password  "
-              placeholder="Enter password again"
+              placeholder="Entre com a senha novamente"
             />
             {errors.confirm_password && touched.confirm_password ? (
               <small id="passwordHelp" class="text-danger">
@@ -105,7 +105,7 @@ class Passwordreset extends Component {
               disabled={isSubmitting}
               class="btn btn-primary btn-block"
             >
-              Save new password
+              Salvar a nova senha
             </button>
           </div>
         </div>
@@ -119,15 +119,14 @@ class Passwordreset extends Component {
         <div className="login-box">
           <div className="login-logo">
             <a href="# ">
-              <b>Basic</b>POS
+              <b>Controle de Livros</b>
             </a>
           </div>
           {/* /.login-logo */}
           <div className="card">
             <div className="card-body login-card-body">
               <p className="login-box-msg">
-                You are only one step a way from your new password, recover your
-                password now.
+                Recupere sua senha agora
               </p>
               <Formik
                 initialValues={{
@@ -147,11 +146,11 @@ class Passwordreset extends Component {
                 {props => this.showForm(props)}
               </Formik>
               <p className="mb-0">
-                <Link to="/login">Login</Link>
+                <Link to="/login">Entrar</Link>
               </p>
 
               <p className="mb-0">
-                <Link to="/register">Register a new membership</Link>
+                <Link to="/register">Registrar um novo usuario</Link>
               </p>
             </div>
             {/* /.login-card-body */}

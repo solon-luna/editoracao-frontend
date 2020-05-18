@@ -36,7 +36,7 @@ class LocalList extends Component {
     dispatch(startGetLocais());
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let { isLoading, response, editDialogOpen } = this.state
 
     if (nextProps.local.erro !== '') {
@@ -134,6 +134,7 @@ class LocalList extends Component {
 
   render() {
     return (
+      <div className="content-wrapper">
       <section className="containerEntrada">
         { this._renderTable() }
 
@@ -171,6 +172,7 @@ class LocalList extends Component {
           onRequestClose={() => this.setState({ response: '' })}
         />
       </section>
+      </div>
     );
   }
 }

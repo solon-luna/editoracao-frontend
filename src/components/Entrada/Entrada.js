@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Snackbar from 'material-ui/Snackbar';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 import { startGetLivros } from '../../actions/LivroActions';
@@ -27,7 +26,7 @@ class Entrada extends Component {
     dispatch(startGetLivros());
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let { isLoading, response } = this.state;
     if (nextProps.livro.erro !== '') {
       isLoading = false;
@@ -87,6 +86,7 @@ class Entrada extends Component {
     }
 
     return (
+      <div className="content-wrapper">
       <section className="containerEntrada">
 
         <span className="title">Vamos registrar a entrada de livros :)</span>
@@ -98,6 +98,7 @@ class Entrada extends Component {
           </section>
         </ReactCSSTransitionReplace>
       </section>
+      </div>
     );
   }
 }

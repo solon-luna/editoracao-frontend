@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as types from '../constants/Api';
-import { SET_LIVROS, SET_LIVROS_ASSUNTOS, ERRO } from '../constants/ActionTypes';
-import { ERRO_AUTENTICACAO, ERRO_COMUNICACAO } from '../constants/MensagensLogin';
+import { SET_LIVROS, ERRO } from '../constants/ActionTypes';
+import { ERRO_COMUNICACAO } from '../constants/MensagensLogin';
 
 // Erro de autenticação
 export const erroLivro = erro => ({
